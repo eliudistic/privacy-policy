@@ -1,4 +1,4 @@
-TURN THIS {import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   FaSearch,
   FaChevronRight,
@@ -848,4 +848,4 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
     </div>
   );
 };      
-export default PrivacyPolicy;} TO ABSOLUTE HTML AND RETURN FULL CODE
+export default PrivacyPolicy;
