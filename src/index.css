@@ -1,0 +1,238 @@
+/* Example CSS for better styling of the sound icon */
+.read-audio-button {
+    color: #666;
+    font-size: 1.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    vertical-align: middle;
+    transition: color 0.2s ease;
+  }
+  
+  .read-audio-button:hover {
+    color: #333;
+  }
+  
+  /* Import Google Fonts if you like */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+  
+  /* Base Container */
+  .privacy-privacy-container {
+    display: flex;
+    flex-direction: column;
+    background: #f4f6f8;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Layout wrapper */
+  .privacy-privacy-layout {
+    display: flex;
+    flex: 1;
+    margin-top: 10px; /* If your navbar is fixed and 70px tall */
+  }
+  
+  /* Sidebar */
+  .privacy-privacy-sidebar {
+    flex-shrink: 0;
+    width: 300px;
+    background: #fff;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    position: sticky;
+    top: 10px; /* Keep below the navbar if it's fixed */
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  
+  .privacy-search-box {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .privacy-search-box input {
+    width: 100%;
+    padding: 10px 35px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .privacy-search-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #666;
+  }
+  
+  .privacy-tts-controls {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .privacy-tts-controls label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .privacy-tts-controls select {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .privacy-sidebar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .privacy-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .privacy-toc-list li {
+    margin-bottom: 8px;
+  }
+  
+  .privacy-toc-list li a {
+    text-decoration: none;
+    color: #1d3557;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .privacy-toc-list li a:hover {
+    color: #ff08ef;
+  }
+  
+  /* Main Content */
+  .privacy-privacy-content {
+    flex: 1;
+    display: block;
+    overflow-y: auto;
+    padding: 30px;
+    background: #f4f6f8;
+  }
+  
+  /* Policy Sections */
+  .privacy-policy-section {
+    background: #fff;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .privacy-policy-section h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .privacy-policy-section p {
+    line-height: 1.6em;
+    color: #555;
+    font-size: 1rem;
+  }
+  
+  /* Subsections */
+  .privacy-subsections {
+    margin-top: 20px;
+  }
+  
+  .privacy-subsection {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background: #f9f9f9;
+  }
+  
+  .privacy-subsection-header {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background: #eaeaea;
+    padding: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .privacy-collapse-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .privacy-subsection-header:hover {
+    background: #ddd;
+  }
+  
+  .privacy-subsection-text {
+    padding: 10px;
+    background: #fff;
+    font-size: 0.95em;
+    line-height: 1.6em;
+    color: #555;
+  }
+  
+  /* No Results Message */
+  .privacy-no-results {
+    background: #fffbe2;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  /* Word Highlighting (already included in JS logic) */
+  mark {
+    background-color: yellow;
+    color: inherit;
+  }
+  
+  /* 'Currently Reading' info at the bottom */
+  .currently-reading {
+    background: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .privacy-privacy-layout {
+      flex-direction: column;
+    }
+    .privacy-privacy-sidebar {
+      position: static;
+      width: 100%;
+      max-height: none;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+    .privacy-privacy-content {
+      padding: 15px;
+    }
+  }
+  
