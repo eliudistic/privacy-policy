@@ -6,6 +6,8 @@ import {
   FaVolumeUp,
   FaVolumeOff,
 } from 'react-icons/fa';
+import '../index.css'; 
+
  // Adjust if needed
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/api';
 // -------------------------------------------------------------------------------------------
@@ -699,33 +701,31 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
   // 6) Final JSX Return
   // -----------------------------------------------------------------------------------------
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="flex flex-col md:flex-row md:max-w-7xl mx-auto">
+    <div className="privacy-privacy-container">
+      <div className="privacy-privacy-layout">
         {/* Sidebar */}
-        <aside className="w-full md:w-64 p-4 bg-white border-r border-gray-200">
-          <header className="mb-4">
-            <h1 className="text-xl font-bold text-gray-800 dark:text-white">Privacy Policy</h1>
+        <aside className="privacy-privacy-sidebar">
+          <header className="privacy-sidebar-title">
+            <h1>Privacy Policy</h1>
           </header>
           
-          <div className="space-y-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search in policy..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <FaSearch className="absolute left-2 top-3 text-gray-400" />
-            </div>
+          <div className="privacy-search-box">
+            <input
+              type="text"
+              placeholder="Search in policy..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <FaSearch className="privacy-search-icon" />
+          </div>
   
-            <div className="flex flex-col space-y-2">
-              <label className="text-sm font-medium text-gray-700">Language:</label>
+          <div className="privacy-tts-controls">
+            <div className="privacy-tts-controls">
+              <label>Language:</label>
               <select
                 id="language-select"
                 value={currentLanguage}
                 onChange={(e) => setCurrentLanguage(e.target.value)}
-                className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {languages.map((lang) => (
                   <option key={lang.code} value={lang.code}>
@@ -737,9 +737,9 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
             </div>
           </div>
   
-          <nav className="mt-4">
-            <h2 className="text-sm font-semibold text-gray-600 mb-2">Contents</h2>
-            <ul className="space-y-2">
+          <nav>
+            <h2 className="privacy-sidebar-title">Contents</h2>
+            <ul className="privacy-toc-list">
               {toc.map((sec) => (
                 <li key={sec.id}>
                   <a
@@ -751,7 +751,6 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
                         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }
                     }}
-                    className="block px-2 py-1 text-gray-600 hover:bg-gray-100 rounded transition-colors"
                   >
                     {sec.title}
                   </a>
@@ -759,24 +758,23 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
               ))}
             </ul>
           </nav>
-
         </aside>
   
         {/* Main Content */}
-        <main className="flex-1 p-6 max-w-3xl mx-auto">
+        <main className="privacy-privacy-content">
           {displayedPolicy.map((section) => {
             const sectionId = section.id;
             const isPlaying = playingSection === sectionId;
             return (
-              <section key={sectionId} className="mb-8">
+              <section key={sectionId} className="privacy-policy-section">
                 <header 
                   id={sectionId}
-                  className="sticky top-0 bg-white py-4 border-b border-gray-200"
+                  className="section-header"
                 >
                   <h2 className="text-lg font-semibold flex items-center gap-2">
                     <button
                       onClick={() => handleToggleAudio(section)}
-                      className="p-2 hover:text-blue-600 transition-colors"
+                      className="read-audio-button"
                       aria-label="Read this section aloud"
                     >
                       {isPlaying ? <FaVolumeOff /> : <FaVolumeUp />}
@@ -790,19 +788,19 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
                   </h2>
                 </header>
   
-                <div className="mt-4 prose text-gray-600">
+                <div className="privacy-subsection-text">
                   {renderSectionContent(section)}
                 </div>
   
                 {section.subsections?.length > 0 && (
-                  <div className="mt-4 space-y-2">
+                  <div className="privacy-subsections">
                     {section.subsections.map((sub) => {
                       const isExpanded = expandedSections[sub.id] || false;
                       return (
-                        <article key={sub.id} className="border rounded-lg">
+                        <article key={sub.id} className="privacy-subsection">
                           <header 
                             id={sub.id}
-                            className="p-2 hover:bg-gray-50 cursor-pointer"
+                            className="privacy-subsection-header"
                             onClick={() =>
                               setExpandedSections((prev) => ({
                                 ...prev,
@@ -812,7 +810,7 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
                           >
                             <div className="flex items-center gap-2">
                               <button
-                                className="p-1 hover:bg-gray-200 rounded"
+                                className="privacy-collapse-btn"
                                 aria-expanded={isExpanded}
                               >
                                 {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
@@ -826,7 +824,7 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
                             </div>
                           </header>
                           {isExpanded && (
-                            <div className="p-4 pt-2 ml-8 border-t border-gray-100">
+                            <div className="privacy-subsection-text">
                               {renderSubsectionText(section, sub)}
                             </div>
                           )}
@@ -840,15 +838,15 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
           })}
   
           {displayedPolicy.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
+            <div className="privacy-no-results">
               <p>No sections match your search terms.</p>
             </div>
           )}
   
           {spokenWords.length > 0 && (
-            <div className="fixed bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg border border-gray-200">
-              <h4 className="text-sm font-semibold mb-2">Currently Reading:</h4>
-              <p className="text-sm text-gray-600 max-w-xs">{spokenWords.join(' ')}</p>
+            <div className="currently-reading">
+              <h4>Currently Reading:</h4>
+              <p>{spokenWords.join(' ')}</p>
             </div>
           )}
         </main>
