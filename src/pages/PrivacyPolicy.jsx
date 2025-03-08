@@ -520,13 +520,21 @@ const PrivacyPolicy = ({ userLanguage, isLoggedIn }) => {
     // 2) Request TTS from your backend (no timepoints)
     const selectedVoice = defaultVoices[currentLanguage] || defaultVoices.default;
     let audioUrl;
+    const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('XSRF-TOKEN='))
+      ?.split('=')[1];
+
+    if (!csrfToken) {
+      throw new Error('CSRF token not found');
+    }
 
     try {
-      const res = await fetch(`https://sorrybriannah.filedocr/tts/generate`, {
+      const res = await fetch(`${API_BASE_URL}/tts/generate`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken, },
         body: JSON.stringify({ text: combinedText, voice: selectedVoice }),
-        
+        credentials: 'include',
       });
 
       if (!res.ok) {
