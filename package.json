@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://privacy.filedocr.com/",
+  "homepage": "https://eliudistic.github.io/privacy-policy",
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "daisyui": "^1.25.4",
